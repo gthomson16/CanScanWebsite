@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="300" height="300" fill="#f7f7f7"/>
+  
+  <!-- Jacket body -->
+  <path d="M100,80 C100,80 90,120 90,160 C90,200 100,220 100,220 L200,220 C200,220 210,200 210,160 C210,120 200,80 200,80 Z" fill="#C41E3A"/>
+  
+  <!-- Jacket collar -->
+  <path d="M100,80 C100,80 110,90 150,90 C190,90 200,80 200,80 L200,100 C200,100 170,110 150,110 C130,110 100,100 100,100 Z" fill="#111"/>
+  
+  <!-- Zipper -->
+  <rect width="6" height="110" x="147" y="110" fill="#999"/>
+  <circle cx="150" cy="110" r="5" fill="#999"/>
+  <circle cx="150" cy="220" r="5" fill="#999"/>
+  
+  <!-- Pockets -->
+  <rect width="30" height="20" rx="5" x="110" y="170" fill="#A00"/>
+  <rect width="30" height="20" rx="5" x="160" y="170" fill="#A00"/>
+  
+  <!-- Sleeve outlines -->
+  <path d="M100,100 C80,110 60,130 50,160" fill="none" stroke="#C41E3A" stroke-width="25" stroke-linecap="round"/>
+  <path d="M200,100 C220,110 240,130 250,160" fill="none" stroke="#C41E3A" stroke-width="25" stroke-linecap="round"/>
+  
+  <!-- Hood outline -->
+  <path d="M120,85 C120,65 180,65 180,85" fill="none" stroke="#C41E3A" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- Maple leaf logo -->
+  <path fill="#fff" transform="translate(130,140) scale(0.4)" d="M150,140 l5,5 l3,-3 l2,10 l5,-3 l1,5 l10,-13 l-4,13 l5,3 l-10,3 l3,5 l-10,-5 l-5,10 l-5,-10 l-10,5 l3,-5 l-10,-3 l5,-3 l-4,-13 l10,13 l1,-5 l5,3 z"/>
+
+  <!-- Made in Canada tag -->
+  <rect width="80" height="20" rx="10" x="110" y="240" fill="#FF0000"/>
+  <text x="150" y="255" font-family="Arial" font-size="10" font-weight="bold" fill="white" text-anchor="middle">MADE IN CANADA</text>
+</svg>

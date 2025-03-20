@@ -1,0 +1,350 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Page section backgrounds - removed background images */
+/* Using a more specific selector for page backgrounds that aren't headers */
+section.bg-gray-50 {
+  background-color: #f9fafb;
+  background-attachment: scroll; /* Ensure no parallax effect */
+}
+
+section.bg-white {
+  background-color: white;
+  background-attachment: scroll; /* Ensure no parallax effect */
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 245, 245, 245;
+  --canada-red: 255, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Section spacing adjustments for better parallax */
+section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  position: relative;
+}
+
+/* Classic Parallax Effect - W3Schools style */
+.parallax-container {
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Parallax section types */
+.parallax-hero {
+  background-image: linear-gradient(rgba(220, 38, 38, 0.95), rgba(153, 27, 27, 0.95)), url('/CanScanWeb/images/CanScan_red.png');
+  background-size: 100%;
+  background-position: center 40%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.parallax-features {
+  background-image: url('/CanScanWeb/images/CanScan_white.png');
+  background-color: #f8f9fa;
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light;
+  min-height: 100vh;
+  padding: 100px 0;
+}
+
+.parallax-products {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('/CanScanWeb/images/CanScan_white.png');
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: soft-light;
+  min-height: 100vh;
+  padding: 100px 0;
+}
+
+/* Make sure there's enough content to scroll */
+.content-spacer {
+  height: 50vh;
+}
+
+/* Force smoother animations */
+.parallax-element {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Diagnostic tool for scroll debugging */
+.scroll-indicator {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background: rgba(255, 0, 0, 0.7);
+  color: white;
+  border-radius: 5px;
+  z-index: 100;
+  font-size: 12px;
+}
+
+/* Custom animations and parallax effects */
+
+/* Page scroll progress indicator */
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 50;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, rgb(var(--canada-red)), rgb(255, 80, 80));
+  transform-origin: 0%;
+}
+
+/* Parallax scrolling helpers */
+.parallax-slow {
+  transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+.parallax-medium {
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+.parallax-fast {
+  transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes float-delay {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate-y-slight {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(5deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+/* Apply animations */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delay {
+  animation: float-delay 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-pulse-scale {
+  animation: pulse-scale 3s ease-in-out infinite;
+}
+
+.animate-rotate-y {
+  animation: rotate-y-slight 8s ease-in-out infinite;
+}
+
+/* Utilities for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.rotate-y-3 {
+  transform: rotateY(3deg);
+}
+
+.rotate-z-1 {
+  transform: rotateZ(1deg);
+}
+
+.rotate-y-0 {
+  transform: rotateY(0deg);
+}
+
+/* Stagger Animation */
+@keyframes stagger-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-stagger {
+  opacity: 0;
+  animation: stagger-in 0.8s forwards;
+}
+
+.stagger-delay-1 { animation-delay: 0.1s; }
+.stagger-delay-2 { animation-delay: 0.2s; }
+.stagger-delay-3 { animation-delay: 0.3s; }
+.stagger-delay-4 { animation-delay: 0.4s; }
+.stagger-delay-5 { animation-delay: 0.5s; }
+
+/* Custom component styles */
+@layer components {
+  .btn-primary {
+    @apply bg-canada-red text-white font-bold py-2 px-6 rounded-lg hover:bg-red-700 transition duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-canada-red border-2 border-canada-red font-bold py-2 px-6 rounded-lg hover:bg-gray-100 transition duration-200;
+  }
+  
+  .section-heading {
+    @apply text-3xl md:text-4xl font-bold text-canada-dark mb-6;
+  }
+  
+  .card {
+    @apply bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-200;
+  }
+  
+  /* Glass effect */
+  .glass {
+    @apply bg-white bg-opacity-100;
+    backdrop-filter: none;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-canada-red to-red-700;
+  }
+  
+  /* Custom header for sticky with glass effect */
+  .header-glass {
+    @apply bg-white bg-opacity-100 shadow-sm;
+    background-image: none;
+    backdrop-filter: none;
+  }
+  
+  /* Badge with animation */
+  .badge-animated {
+    @apply inline-block px-3 py-1 bg-red-100 text-canada-red rounded-full font-semibold text-sm animate-pulse;
+  }
+  
+  /* 3D card effect */
+  .card-3d {
+    @apply transition-all duration-300 transform perspective-1000;
+  }
+  
+  .card-3d:hover {
+    @apply shadow-xl -translate-y-2 rotate-y-3;
+  }
+}
+
+/* Background pattern slow rotation */
+@keyframes slow-rotate {
+  0% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(17deg);
+  }
+  100% {
+    transform: rotate(15deg);
+  }
+}
+
+.animate-slow-rotate {
+  animation: slow-rotate 20s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--canada-red), 0.6);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--canada-red), 0.8);
+}
+
+/* Emoji styling to prevent size issues */
+emoji, .emoji {
+  font-size: 1em !important;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Selection style */
+::selection {
+  background-color: rgba(var(--canada-red), 0.2);
+  color: rgb(var(--foreground-rgb));
+}

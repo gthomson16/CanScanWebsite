@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f5f5f5"/>
+  
+  <!-- Phone outline -->
+  <rect width="180" height="280" rx="20" x="110" y="10" fill="#333"/>
+  <rect width="160" height="260" rx="10" x="120" y="20" fill="#fff"/>
+  
+  <!-- Camera interface -->
+  <rect width="160" height="60" x="120" y="20" fill="#FF0000"/>
+  <text x="200" y="55" font-family="Arial" font-size="16" fill="white" text-anchor="middle" font-weight="bold">CanScan</text>
+  
+  <!-- Camera viewfinder -->
+  <rect width="140" height="140" x="130" y="90" fill="#f0f0f0"/>
+  
+  <!-- Product in viewfinder -->
+  <rect width="60" height="90" rx="5" x="170" y="115" fill="#A0522D"/>
+  <rect width="50" height="80" rx="3" x="175" y="120" fill="#B25D30"/>
+  <rect width="40" height="30" x="180" y="130" fill="#f2f2f2" stroke="#FF0000" stroke-width="1"/>
+  <path fill="#FF0000" transform="translate(192, 140) scale(0.15)" d="M150,140 l5,5 l3,-3 l2,10 l5,-3 l1,5 l10,-13 l-4,13 l5,3 l-10,3 l3,5 l-10,-5 l-5,10 l-5,-10 l-10,5 l3,-5 l-10,-3 l5,-3 l-4,-13 l10,13 l1,-5 l5,3 z"/>
+  
+  <!-- Recognition indicators -->
+  <rect width="140" height="24" x="130" y="90" fill="rgba(255,0,0,0.2)"/>
+  <text x="200" y="107" font-family="Arial" font-size="12" fill="#FF0000" text-anchor="middle">Scanning Product</text>
+  
+  <!-- Recognition boxes -->
+  <rect width="65" height="95" rx="5" x="167.5" y="112.5" fill="none" stroke="#00C853" stroke-width="2" stroke-dasharray="5,5"/>
+  <rect width="40" height="30" x="180" y="130" fill="none" stroke="#00C853" stroke-width="2"/>
+  
+  <!-- Recognition success -->
+  <rect width="140" height="24" rx="12" x="130" y="235" fill="#00C853"/>
+  <text x="200" y="252" font-family="Arial" font-size="12" fill="white" text-anchor="middle">Canadian Product ✓</text>
+  
+  <!-- Bottom UI -->
+  <rect width="80" height="24" rx="12" x="160" y="260" fill="#FF0000"/>
+  <text x="200" y="277" font-family="Arial" font-size="12" fill="white" text-anchor="middle">View Details</text>
+  
+  <!-- Maple leaf watermark -->
+  <path fill="#FF0000" opacity="0.05" transform="translate(170, 160) scale(0.6)" d="M150,140 l5,5 l3,-3 l2,10 l5,-3 l1,5 l10,-13 l-4,13 l5,3 l-10,3 l3,5 l-10,-5 l-5,10 l-5,-10 l-10,5 l3,-5 l-10,-3 l5,-3 l-4,-13 l10,13 l1,-5 l5,3 z"/>
+</svg>
