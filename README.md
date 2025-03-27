@@ -1,51 +1,58 @@
 # CanScan Website
 
-This is the official website for CanScan, a mobile application that helps Canadians identify and support local products through barcode and image scanning.
+This is the official website for the CanScan application, built with Next.js, TypeScript, and Tailwind CSS.
 
-## Development
+## Features
 
-This website is built with:
-- Next.js (React framework)
-- TypeScript
-- Tailwind CSS
-- Framer Motion for animations
+*   Information about the CanScan app and its features.
+*   Download links for iOS and Android (links currently placeholders).
+*   Support information and FAQ.
+*   Internationalization (English & French) using `next-intl`.
 
-### Local Development
+## Tech Stack
 
-1. Clone the repository
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Start the development server:
-   ```
-   npm run dev
-   ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+*   **Framework:** [Next.js](https://nextjs.org/) (App Router)
+*   **Language:** [TypeScript](https://www.typescriptlang.org/)
+*   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+*   **Internationalization:** [next-intl](https://next-intl-docs.vercel.app/)
+
+## Getting Started
+
+### Prerequisites
+
+*   Node.js (Version 18.x or later recommended)
+*   npm (or yarn/pnpm)
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/gthomson16/CanScanWebsite.git
+    cd CanScanWebsite
+    ```
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+### Running the Development Server
+
+To run the website locally in development mode:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+### Building for Production
+
+To create an optimized production build:
+
+```bash
+npm run build
+```
 
 ## Deployment
 
-The website is deployed to GitHub Pages. To deploy:
-
-1. Run the deployment script:
-   ```
-   ./deploy.bat
-   ```
-
-This will:
-1. Build the project
-2. Export the static files
-3. Deploy to the gh-pages branch
-
-The live site is available at [https://gthomson16.github.io/CanScanWeb/](https://gthomson16.github.io/CanScanWeb/)
-
-## Project Structure
-
-- `/app` - Next.js app directory (pages, layouts)
-- `/components` - Reusable React components
-- `/public` - Static assets (images, fonts)
-
-## Contact
-
-For any questions regarding this website, please contact:
-- support@canscan.ca
+This project is intended for deployment on platforms supporting Next.js server-side features (like Vercel or Netlify) due to the use of `next-intl` with the App Router. Static export via `next export` is not compatible with the current internationalization setup.
