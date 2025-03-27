@@ -1,32 +1,35 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl'; // Import useTranslations
 
 const DownloadCTA = () => {
+  const t = useTranslations('DownloadCTA'); // Get translations
+  const pathname = usePathname();
+  // Check if we're on the home page
+  const isHomePage = pathname === '/'; // Note: This logic might need adjustment with locale prefixes
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Background gradient with maple leaf pattern */}
+    <section className="py-20 relative overflow-visible z-30">
+      {/* Top border */}
+      <div className="w-full border-t-2 border-black absolute top-0 left-0 right-0 z-20"></div>
+      {/* Bottom border - only show on non-home pages */}
+      {!isHomePage && <div className="w-full border-b-2 border-black absolute bottom-0 left-0 right-0 z-20"></div>}
+      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-canada-red to-red-700 z-0"></div>
-      
-      {/* Maple leaf pattern overlay */}
-      <div 
-        className="absolute inset-0 z-0 opacity-10" 
-        style={{
-          backgroundImage: `url('/images/maple-pattern.svg')`,
-          backgroundRepeat: 'repeat',
-        }}
-      />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-white">
             <span className="inline-block px-4 py-2 bg-white bg-opacity-20 text-white rounded-full font-semibold text-sm mb-6">
-              Ready to Try CanScan?
+              {t('tagline')}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Download CanScan Today
+              {t('title')}
             </h2>
             <p className="text-lg opacity-90 mb-8 max-w-lg">
-              Join thousands of Canadians who use CanScan to discover and support local products. Download the app for free on iOS and Android.
+              {t('description')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -39,8 +42,8 @@ const DownloadCTA = () => {
                   <path d="M15.53 3.083c.843-1.021 1.41-2.435 1.245-3.83-1.207.054-2.662.803-3.532 1.812-.775.894-1.452 2.338-1.273 3.714 1.338.104 2.716-.684 3.559-1.696z" fill="#000"/>
                 </svg>
                 <div>
-                  <div className="text-xs">Download on the</div>
-                  <div className="text-xl font-bold">App Store</div>
+                  <div className="text-xs">{t('appStoreLabel')}</div>
+                  <div className="text-xl font-bold">{t('appStoreName')}</div>
                 </div>
               </Link>
               <Link 
@@ -54,8 +57,8 @@ const DownloadCTA = () => {
                   <path d="M16.652 15.118L5 21.934a1.5 1.5 0 01-1.299-.608l8.933-8.944 4.018 2.736z" fill="#000"/>
                 </svg>
                 <div>
-                  <div className="text-xs">GET IT ON</div>
-                  <div className="text-xl font-bold">Google Play</div>
+                  <div className="text-xs">{t('googlePlayLabel')}</div>
+                  <div className="text-xl font-bold">{t('googlePlayName')}</div>
                 </div>
               </Link>
             </div>
@@ -76,8 +79,8 @@ const DownloadCTA = () => {
                       </svg>
                     ))}
                   </div>
-                  <p className="text-white italic mb-2">"CanScan has completely changed how I shop. Now I can easily find and support Canadian businesses with just a quick scan!"</p>
-                  <p className="text-white text-sm font-medium">— Sarah from Toronto</p>
+                  <p className="text-white italic mb-2">{t('testimonial')}</p>
+                  <p className="text-white text-sm font-medium">{t('testimonialAuthor')}</p>
                 </div>
               </div>
             </div>
@@ -86,44 +89,15 @@ const DownloadCTA = () => {
           <div className="flex justify-center lg:justify-end relative">
             {/* Phone mockup with glow effect */}
             <div className="relative">
-              <div className="absolute -inset-4 bg-white rounded-full blur-xl opacity-20"></div>
-              <div className="relative h-[500px] w-[250px] transform perspective-1000 rotate-y-3 hover:rotate-y-0 transition-all duration-500">
+              <div className="absolute -inset-4 bg-white blur-xl opacity-20"></div>
+              <div className="relative h-[500px] w-[250px] transition-all duration-300 hover:scale-105 hover:z-10 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[5deg] transform-gpu overflow-hidden">
                 <Image 
-                  src="/images/phone-mockup.svg" 
+                  src="/images/screens/bilingual.jpg" 
                   alt="CanScan App" 
                   fill
                   style={{ objectFit: 'contain' }}
                   className="relative z-10"
                 />
-              </div>
-              
-              {/* Decorative maple leaves */}
-              <div className="absolute top-10 -left-20 text-white animate-float opacity-30">
-                <svg width="60" height="60" viewBox="0 0 512 512" fill="currentColor">
-                  <path d="M256,0c-23.357,0-42.297,18.932-42.297,42.288c0,13.928,6.726,26.264,17.151,33.963
-                  c-10.24,12.777-26.569,21.489-26.569,21.489s20.075-0.908,30.911-3.024c-7.523,12.304-24.333,26.233-24.333,26.233
-                  s19.339-3.75,32.499-13.716c-9.889,31.974-34.542,40.623-34.542,40.623s23.535,5.094,43.083-9.343
-                  c-8.156,21.051-33.971,35.223-33.971,35.223s21.479-1.26,46.815-19.057c7.068,29.653-16.304,60.369-16.304,60.369
-                  s37.073-15.38,47.446-61.123c4.056,8.48,28.236,18.395,28.236,18.395s-15.659-21.823-18.417-31.863
-                  c13.891,10.814,40.173,16.52,40.173,16.52s-31.968-26.02-35.906-39.185c13.829,5.46,39.155,6.787,39.155,6.787
-                  s-28.785-20.012-33.952-30.44c23.389,5.414,57.274-0.463,57.274-0.463s-59.873-10.183-64.693-24.354
-                  c19.293,0.312,34.218-6.318,34.218-6.318s-24.427-5.779-33.187-13.341c10.424-7.699,17.151-20.035,17.151-33.963
-                  C298.297,18.932,279.357,0,256,0z"/>
-                </svg>
-              </div>
-              
-              <div className="absolute bottom-20 -right-10 text-white animate-float-delay opacity-30">
-                <svg width="40" height="40" viewBox="0 0 512 512" fill="currentColor">
-                  <path d="M256,0c-23.357,0-42.297,18.932-42.297,42.288c0,13.928,6.726,26.264,17.151,33.963
-                  c-10.24,12.777-26.569,21.489-26.569,21.489s20.075-0.908,30.911-3.024c-7.523,12.304-24.333,26.233-24.333,26.233
-                  s19.339-3.75,32.499-13.716c-9.889,31.974-34.542,40.623-34.542,40.623s23.535,5.094,43.083-9.343
-                  c-8.156,21.051-33.971,35.223-33.971,35.223s21.479-1.26,46.815-19.057c7.068,29.653-16.304,60.369-16.304,60.369
-                  s37.073-15.38,47.446-61.123c4.056,8.48,28.236,18.395,28.236,18.395s-15.659-21.823-18.417-31.863
-                  c13.891,10.814,40.173,16.52,40.173,16.52s-31.968-26.02-35.906-39.185c13.829,5.46,39.155,6.787,39.155,6.787
-                  s-28.785-20.012-33.952-30.44c23.389,5.414,57.274-0.463,57.274-0.463s-59.873-10.183-64.693-24.354
-                  c19.293,0.312,34.218-6.318,34.218-6.318s-24.427-5.779-33.187-13.341c10.424-7.699,17.151-20.035,17.151-33.963
-                  C298.297,18.932,279.357,0,256,0z"/>
-                </svg>
               </div>
             </div>
           </div>

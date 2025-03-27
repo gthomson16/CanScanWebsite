@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Reset spacing */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Section styles */
+.features-section {
+  position: relative;
+  padding-bottom: 40px; /* Reduced from 100px */
+  background-color: transparent; /* Transparent to show background image */
+}
+
+.canadian-products-section {
+  position: relative;
+  padding-top: 20px; /* Reduced from 40px */
+  background-color: transparent;
+}
+
+/* Make sure sections don't overlap */
+section {
+  overflow: visible;
+  position: relative;
+}
+
+/* Space between sections */
+section + section {
+  margin-top: 0px; /* Reduced from 30px */
+}
+
 /* Page section backgrounds - removed background images */
 /* Using a more specific selector for page backgrounds that aren't headers */
 section.bg-gray-50 {
@@ -29,23 +61,23 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 /* Section spacing adjustments for better parallax */
 section {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
   position: relative;
 }
 
 /* Classic Parallax Effect - W3Schools style */
 .parallax-container {
-  height: 100vh;
+  position: relative;
   background-attachment: fixed;
   background-position: center 40%;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
 }
 
 .parallax-content {
@@ -70,8 +102,10 @@ section {
   background-position: center;
   background-repeat: no-repeat;
   background-blend-mode: soft-light;
-  min-height: 100vh;
-  padding: 100px 0;
+  min-height: auto;
+  padding: 100px 0 200px 0; /* Added extra bottom padding */
+  position: relative;
+  z-index: 1;
 }
 
 .parallax-products {
@@ -80,8 +114,11 @@ section {
   background-position: center;
   background-repeat: no-repeat;
   background-blend-mode: soft-light;
-  min-height: 100vh;
-  padding: 100px 0;
+  min-height: auto;
+  padding: 150px 0 100px 0; /* Added extra top padding */
+  position: relative;
+  z-index: 2;
+  margin-top: -100px; /* Creates proper separation */
 }
 
 /* Make sure there's enough content to scroll */
@@ -327,12 +364,79 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(var(--canada-red), 0.6);
+  background: rgb(255, 0, 0); /* Fully opaque red */
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--canada-red), 0.8);
+  background: rgb(220, 0, 0); /* Darker red on hover */
+}
+
+/* Mobile scrollbar styles */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255, 0, 0); /* Fully opaque red */
+  }
+  
+  /* For Firefox on Android */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255, 0, 0) #f1f1f1;
+  }
+}
+
+/* iOS scrollbar overscroll (the rubber-band effect background) */
+:root {
+  --scroll-background: rgb(255, 0, 0);
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-color: rgb(255, 0, 0);
+  }
+  
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: -1;
+  }
+}
+
+/* Additional scrollbar styles for IE/Edge */
+/* For MS Edge and IE */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  html {
+    scrollbar-face-color: rgb(255, 0, 0);
+    scrollbar-track-color: #f1f1f1;
+    scrollbar-arrow-color: rgb(255, 0, 0);
+    scrollbar-shadow-color: rgb(255, 0, 0);
+  }
+}
+
+/* Ensure Firefox scrollbars are also 100% opaque */
+* {
+  scrollbar-color: rgb(255, 0, 0) #f1f1f1;
+}
+
+/* Responsive background image sizing */
+.background-image-container {
+  background-size: 60%; /* Size for desktop devices */
+}
+
+/* Larger size for mobile devices */
+@media (max-width: 768px) {
+  .background-image-container {
+    background-size: 95% !important; /* Size for mobile devices */
+  }
 }
 
 /* Emoji styling to prevent size issues */

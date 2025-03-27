@@ -1,53 +1,30 @@
 @echo off
-echo Starting manual deployment to GitHub Pages...
-
-:: Clean previous build
-echo Cleaning previous builds...
-if exist "out" (
-    rmdir /s /q out
-)
-if exist ".next" (
-    rmdir /s /q .next
-)
+echo Starting manual deployment for canscanapp.ca...
 
 :: Build the project
-echo Building the project...
+echo Building project...
 call npm run build
 
+:: Check if build was successful
 if %ERRORLEVEL% neq 0 (
     echo Error during build process. Aborting deployment.
     exit /b %ERRORLEVEL%
 )
 
-:: Create temporary deploy directory
-echo Creating temporary deployment folder...
-set DEPLOY_DIR=deploy_temp
-if exist "%DEPLOY_DIR%" (
-    rmdir /s /q %DEPLOY_DIR%
-)
-mkdir %DEPLOY_DIR%
+:: Prepare the out directory
+echo Copying build output to deploy directory...
+mkdir deploy-temp 2>nul
+xcopy /E /Y out\* deploy-temp\
 
-:: Copy the output to the deploy directory
-echo Copying output files...
-xcopy "out\*" "%DEPLOY_DIR%\" /E /I /H /Y
+:: Add CNAME file for custom domain
+echo canscanapp.ca > deploy-temp\CNAME
 
-:: Initialize git in the deploy directory
-echo Initializing Git repository in deployment folder...
-cd %DEPLOY_DIR%
-git init
-git add .
-git commit -m "Deploy to GitHub Pages"
+:: Create a README for the repository
+echo # CanScan Website > deploy-temp\README.md
+echo This repository contains the deployed version of the CanScan website. >> deploy-temp\README.md
+echo Visit: https://canscanapp.ca >> deploy-temp\README.md
 
-:: Add GitHub remote and push
-echo Pushing to GitHub Pages...
-git remote add origin https://github.com/gthomson16/CanScanWeb.git
-git branch -M gh-pages
-git push -f origin gh-pages
-
-:: Clean up
-echo Cleaning up...
-cd ..
-rmdir /s /q %DEPLOY_DIR%
-
-echo Deployment completed!
-echo Your website should be available at: https://gthomson16.github.io/CanScanWeb/
+echo.
+echo Build complete and ready for manual deployment!
+echo Please upload all files from the 'deploy-temp' folder to your hosting service or GitHub Pages repository.
+echo.

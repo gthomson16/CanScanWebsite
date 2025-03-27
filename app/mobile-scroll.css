@@ -1,0 +1,68 @@
+/* Mobile-specific scrollbar styles to ensure visibility */
+body {
+  /* For iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom scrollbars for mobile devices */
+@media (max-width: 768px) {
+  /* WebKit (Chrome, Safari, newer Edge) */
+  ::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+    margin: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255, 0, 0) !important;
+    border-radius: 4px !important;
+    border: none !important;
+  }
+  
+  /* Firefox */
+  * {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgb(255, 0, 0) transparent !important;
+  }
+  
+  /* Force iOS to show the scrollbar */
+  ::-webkit-scrollbar {
+    -webkit-appearance: none !important;
+  }
+  
+  /* For touch indicators on iOS */
+  ::selection {
+    background-color: rgba(255, 0, 0, 0.2) !important;
+  }
+}
+
+/* iOS scroll edge effect (when you reach the end of scrolling) */
+@supports (-webkit-touch-callout: none) {
+  body::before {
+    content: "";
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background: rgb(255, 0, 0);
+    z-index: -2;
+    pointer-events: none;
+  }
+  
+  body::after {
+    content: "";
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background: white;
+    z-index: -1;
+    pointer-events: none;
+  }
+}

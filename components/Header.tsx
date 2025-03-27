@@ -4,8 +4,11 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { useTranslations } from 'next-intl'; // Import useTranslations
+import LanguageSwitcher from './LanguageSwitcher'; // Import LanguageSwitcher
 
 const Header = () => {
+  const t = useTranslations('Header'); // Initialize translations for 'Header' namespace
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -30,37 +33,39 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'header-glass py-2' : 'bg-white py-4'
+    <header className={`sticky top-0 z-50 transition-all duration-300 m-0 ${
+      isScrolled ? 'header-glass py-0' : 'bg-white py-0'
     }`}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 py-0">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2 group">
-            <div className="relative w-10 h-10 overflow-hidden">
+            <div className="relative w-24 h-20 overflow-hidden flex items-center justify-center">
               <Image 
-                src="/images/CanScan_red.png" 
+                src="/images/CanScan_white.png" 
                 alt="CanScan Logo" 
-                width={40}
-                height={40}
+                width={90}
+                height={90}
                 className="object-contain"
               />
             </div>
-            <span className="text-xl font-bold text-canada-dark">
-              Can<span className="text-canada-red">Scan</span>
+            <span className="text-2xl font-bold">
+              <span className="text-canada-red">Can</span><span className="text-black">Scan</span>
             </span>
           </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-1">
-            <NavLink href="/" label="Home" />
-            <NavLink href="/about" label="About" />
-            <NavLink href="/features" label="Features" />
-            <NavLink href="/support" label="Support" />
+            <NavLink href="/" label={t('home')} />
+            <NavLink href="/about" label={t('about')} />
+            <NavLink href="/features" label={t('features')} />
+            <NavLink href="/support" label={t('support')} />
           </nav>
-          
-          <div className="hidden md:block">
+
+          {/* Container for switcher and download button */}
+          <div className="hidden md:flex items-center space-x-4">
+            <LanguageSwitcher /> {/* Add switcher here */}
             <Link href="/download" className="btn-primary shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-              Download App
+              {t('download')}
             </Link>
           </div>
           
@@ -68,7 +73,7 @@ const Header = () => {
           <button 
             className="md:hidden text-gray-700 hover:text-canada-red"
             onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMenuOpen ? t('ariaLabelClose') : t('ariaLabelOpen')}
           >
             {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
@@ -79,16 +84,19 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden glass absolute w-full left-0 right-0 z-50">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <MobileNavLink href="/" label="Home" onClick={() => setIsMenuOpen(false)} />
-            <MobileNavLink href="/about" label="About" onClick={() => setIsMenuOpen(false)} />
-            <MobileNavLink href="/features" label="Features" onClick={() => setIsMenuOpen(false)} />
-            <MobileNavLink href="/support" label="Support" onClick={() => setIsMenuOpen(false)} />
+            <MobileNavLink href="/" label={t('home')} onClick={() => setIsMenuOpen(false)} />
+            <MobileNavLink href="/about" label={t('about')} onClick={() => setIsMenuOpen(false)} />
+            <MobileNavLink href="/features" label={t('features')} onClick={() => setIsMenuOpen(false)} />
+            <MobileNavLink href="/support" label={t('support')} onClick={() => setIsMenuOpen(false)} />
+            <div className="pt-4 border-t border-gray-100"> {/* Add separator and padding */}
+              <LanguageSwitcher /> {/* Add switcher to mobile menu */}
+            </div>
             <Link 
               href="/download" 
-              className="btn-primary w-full text-center shadow-md"
+              className="btn-primary w-full text-center shadow-md mt-4" // Add margin top
               onClick={() => setIsMenuOpen(false)}
             >
-              Download App
+              {t('download')}
             </Link>
           </div>
         </div>
