@@ -6,6 +6,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server'; 
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -81,6 +83,8 @@ export default async function RootLayout({
               <Footer />
             </div>
         </NextIntlClientProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

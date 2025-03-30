@@ -7,12 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:a11y": "next lint --dir app --dir components",
     "export": "next export",
     "predeploy": "npm run build",
-    "deploy": "gh-pages --dist out --repo https://github.com/gthomson16/CanScanWeb.git"
+    "deploy": "gh-pages --dist out --repo https://github.com/gthomson16/CanScanWeb.git",
+    "check": "eslint --max-warnings=0 ."
   },
   "homepage": "https://canscanapp.ca",
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^11.0.5",
     "next": "^15.2.4",
     "next-intl": "^4.0.2",
@@ -30,7 +34,9 @@
     "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-security": "^3.0.1",
     "gh-pages": "^6.3.0",
     "postcss": "^8.4.35",

@@ -2,21 +2,22 @@ import {getRequestConfig} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 
 // Define supported locales
-const locales = ['en', 'fr'];
+const locales = ['en', 'fr'] as const;
+type Locale = typeof locales[number]; // This creates a type 'en' | 'fr'
 
-const defaultLocale = 'en'; // Define default locale for fallback
+const defaultLocale: Locale = 'en'; // Define default locale for fallback
 
 export default getRequestConfig(async ({locale}) => {
   // Handle undefined locale by falling back to defaultLocale
   const localeToUse = locale === undefined ? defaultLocale : locale;
 
   // Validate that the locale parameter is valid
-  if (!locales.includes(localeToUse as any)) {
+  if (!locales.includes(localeToUse as string)) {
     notFound();
   }
 
   // After the check, locale is guaranteed to be 'en' or 'fr'
-  const validLocale = localeToUse as typeof locales[number]; // Assert as 'en' | 'fr'
+  const validLocale = localeToUse as Locale; // Assert as 'en' | 'fr'
 
   try {
     const messages = (await import(`./messages/${validLocale}.json`)).default;
