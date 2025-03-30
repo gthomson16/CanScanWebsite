@@ -11,8 +11,8 @@ export default getRequestConfig(async ({locale}) => {
   // Handle undefined locale by falling back to defaultLocale
   const localeToUse = locale === undefined ? defaultLocale : locale;
 
-  // Validate that the locale parameter is valid
-  if (!locales.includes(localeToUse as string)) {
+  // Validate that the locale parameter is valid - checking with type assertion
+  if (!locales.includes(localeToUse as Locale)) {
     notFound();
   }
 
