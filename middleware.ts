@@ -12,7 +12,6 @@ export default createMiddleware({
 });
 
 export const config = {
-  // Revert to a standard matcher excluding common non-page assets
-  // Explicitly exclude /images directory as well
-  matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico).*)']
+  // Update matcher to exclude sitemap.xml, robots.txt, and common non-page assets
+  matcher: ['/((?!api|_next/static|_next/image|images|sitemap\\.xml|robots\\.txt|favicon\\.ico).*)']
 };
