@@ -64,7 +64,7 @@ const DownloadCTA = () => {
             </div>
             
             {/* User testimonial */}
-            <div className="mt-12 bg-white bg-opacity-10 p-6 rounded-xl backdrop-filter backdrop-blur-sm">
+            <blockquote className="mt-12 bg-white bg-opacity-10 p-6 rounded-xl backdrop-filter backdrop-blur-sm"> {/* Changed div to blockquote */}
               <div className="flex items-start">
                 <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-canada-red mr-4 flex-shrink-0">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -80,10 +80,12 @@ const DownloadCTA = () => {
                     ))}
                   </div>
                   <p className="text-white italic mb-2">{t('testimonial')}</p>
-                  <p className="text-white text-sm font-medium">{t('testimonialAuthor')}</p>
+                  <p className="text-white italic mb-2">{t('testimonial')}</p>
+                  {/* Consider wrapping author in <cite> or <footer> if needed */}
+                  <p className="text-white text-sm font-medium">{t('testimonialAuthor')}</p> 
                 </div>
               </div>
-            </div>
+            </blockquote> {/* Changed div to blockquote */}
           </div>
           
           <div className="flex justify-center lg:justify-end relative">

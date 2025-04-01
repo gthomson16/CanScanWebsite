@@ -62,13 +62,13 @@ const CanadianProducts = () => {
   const filteredProducts = products.filter(product => product.category === activeCategory);
   
   return (
-    <div className="canadian-products-section bg-white py-16 relative z-30">
+    <section className="canadian-products-section bg-white py-16 relative z-30" aria-labelledby="canadian-products-heading"> {/* Changed div to section and added aria-labelledby */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-red-100 text-canada-red rounded-full font-semibold text-sm mb-4">
             {t('tagline')}
           </span>
-          <h2 className="section-heading">{t('title')}</h2>
+          <h2 id="canadian-products-heading" className="section-heading">{t('title')}</h2> {/* Added id */}
           <p className="text-gray-600 max-w-2xl mx-auto">
             {t('description')}
           </p>
@@ -96,7 +96,7 @@ const CanadianProducts = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProducts.map((product, index) => (
-            <div key={index} className="card overflow-hidden flex flex-col transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+            <article key={index} className="card overflow-hidden flex flex-col transform hover:-translate-y-2 hover:shadow-xl transition-all duration-300"> {/* Changed div to article */}
               <div className="bg-white h-48 relative">
                 <Image 
                   src={product.image} 
@@ -124,11 +124,11 @@ const CanadianProducts = () => {
                 </div>
                 <button className="text-canada-red font-medium hover:underline">{t('buttonViewDetails')}</button>
               </div>
-            </div>
+            </article> // Changed div to article
           ))}
         </div>
       </div>
-    </div>
+    </section> // Changed div to section
   );
 };
 

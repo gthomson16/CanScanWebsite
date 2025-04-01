@@ -300,6 +300,15 @@
     "contactTitle": "10. Nous Contacter",
     "contactP1": "Si vous avez des questions sur ces Conditions d'Utilisation, veuillez nous contacter à :"
   },
+  "NotFoundPage": {
+    "title": "404 - Page Non Trouvée",
+    "message": "Désolé, la page que vous recherchez n'existe pas.",
+    "goHomeButton": "Retourner à l'accueil"
+  },
+  "Metadata": {
+    "siteName": "CanScan",
+    "ogImageAlt": "Logo CanScan"
+  },
   "LanguageSwitcher": {
     "label": "Sélectionner la langue",
     "en": "English",

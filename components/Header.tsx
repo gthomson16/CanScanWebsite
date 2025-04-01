@@ -83,7 +83,7 @@ const Header = () => {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden glass absolute w-full left-0 right-0 z-50">
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+          <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4" aria-label="Mobile navigation"> {/* Add nav and aria-label */}
             <MobileNavLink href="/" label={t('home')} onClick={() => setIsMenuOpen(false)} />
             <MobileNavLink href="/about" label={t('about')} onClick={() => setIsMenuOpen(false)} />
             <MobileNavLink href="/features" label={t('features')} onClick={() => setIsMenuOpen(false)} />
@@ -98,7 +98,7 @@ const Header = () => {
             >
               {t('download')}
             </Link>
-          </div>
+          </nav>
         </div>
       )}
     </header>

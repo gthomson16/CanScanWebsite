@@ -6,6 +6,7 @@ import { FiInstagram, FiTwitter, FiFacebook } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import packageJson from '../package.json'; // Import package.json
 
 const Footer = () => {
   const t = useTranslations('Footer'); // Footer translations
@@ -17,7 +18,6 @@ const Footer = () => {
   const isSupport = pathname === '/support';
   
   return (
-    <>
     <footer className="relative overflow-visible text-white z-10 pb-0 bg-gradient-to-br from-canada-red to-red-700">
       {/* Top border for all pages */}
       <div className="w-full border-t-2 border-black relative z-30"></div>
@@ -56,7 +56,7 @@ const Footer = () => {
             
             <div className="flex space-x-4">
               <a 
-                href="https://twitter.com/canscanapp" 
+                href="https://x.com/gthomson1" // Updated Twitter/X link
                 target="_blank" 
                 rel="noopener noreferrer" 
                 aria-label={t('ariaLabelTwitter')} 
@@ -105,8 +105,8 @@ const Footer = () => {
               <FooterLink href="/download" label={t('iosLabel')} pathname={pathname} />
               <FooterLink href="/download" label={t('androidLabel')} pathname={pathname} />
               <li className="mt-4">
-                {/* Assuming version is hardcoded for now */}
-                <span className="inline-block px-3 py-1 bg-canada-red bg-opacity-20 text-black rounded-full text-xs">{t('versionLabel', {version: '1.0.0'})}</span>
+                {/* Use dynamic version from package.json */}
+                <span className="inline-block px-3 py-1 bg-canada-red bg-opacity-20 text-black rounded-full text-xs">{t('versionLabel', {version: packageJson.version})}</span>
               </li>
             </ul>
           </div>
@@ -157,7 +157,6 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-    </>
   );
 };
 

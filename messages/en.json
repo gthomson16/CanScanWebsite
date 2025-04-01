@@ -94,7 +94,7 @@
   },
   "Footer": {
     "description": "Helping Canadians identify and support local products through advanced scanning technology.",
-    "ariaLabelTwitter": "Follow CanScan on Twitter",
+    "ariaLabelTwitter": "Follow CanScan on Twitter", 
     "ariaLabelFacebook": "Follow CanScan on Facebook",
     "ariaLabelInstagram": "Follow CanScan on Instagram",
     "linksTitle": "Links",
@@ -304,6 +304,10 @@
     "title": "404 - Page Not Found",
     "message": "Sorry, the page you are looking for does not exist.",
     "goHomeButton": "Go back home"
+  },
+  "Metadata": {
+    "siteName": "CanScan",
+    "ogImageAlt": "CanScan Logo"
   },
   "LanguageSwitcher": {
     "label": "Select language",

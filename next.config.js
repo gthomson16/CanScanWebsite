@@ -5,9 +5,9 @@ const nextConfig = {
   // output: 'export', // Removed for next-intl compatibility
   basePath: '',
   assetPrefix: '',
-  images: {
-    unoptimized: true,
-  },
+  // images: { // Image optimization is now ENABLED (default)
+  //   unoptimized: true, 
+  // },
   trailingSlash: false, // Explicitly set to false (default)
 };
 

@@ -40,7 +40,7 @@ const FeatureSection = () => {
   ];
 
   return (
-    <div className="features-section py-24 relative z-30 bg-transparent">
+    <section className="features-section py-24 relative z-30 bg-transparent" aria-labelledby="feature-section-heading"> {/* Changed div to section and added aria-labelledby */}
       {/* Local overlay with lower opacity to let background show through more */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-white opacity-25"></div>
@@ -50,7 +50,7 @@ const FeatureSection = () => {
           <span className="inline-block px-4 py-2 bg-red-100 text-canada-red rounded-full font-semibold text-sm mb-6">
             {t('tagline')}
           </span>
-          <h2 className="section-heading mb-6">{t('title')}</h2>
+          <h2 id="feature-section-heading" className="section-heading mb-6">{t('title')}</h2> {/* Added id */}
           <p className="text-gray-600 max-w-2xl mx-auto">
             {t('description')}
           </p>
@@ -305,7 +305,7 @@ const FeatureSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section> // Changed div to section
   );
 };
 

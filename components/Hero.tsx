@@ -12,7 +12,7 @@ const Hero = () => {
   // Removed console.log
 
   return (
-    <div className="bg-gradient-to-br from-canada-red to-red-700 -mt-2 relative">
+    <section className="bg-gradient-to-br from-canada-red to-red-700 -mt-2 relative"> {/* Changed div to section */}
       {/* Top border */}
       <div className="w-full border-t-2 border-black absolute top-0 left-0 right-0 z-20"></div>
       {/* Bottom border */}
@@ -66,7 +66,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section> // Changed div to section
   );
 };
 
