@@ -26,32 +26,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
         // changeFrequency: 'weekly', // Optional: How often the page might change
         // priority: route === '' ? 1.0 : 0.8, // Optional: Priority relative to other pages (1.0 is highest)
       });
+      // Removed extra closing brace/parenthesis here
     });
   });
 
-  // Add entries for non-locale-prefixed default locale if needed (depends on your routing setup)
-  // If your default locale ('en') also exists at the root (e.g., canscanapp.ca/about), add those too.
-  // Assuming 'en' is the default and accessible without prefix:
+  // Add entries for the default locale ('en') without the prefix, as localePrefix is 'as-needed'
   staticRoutes.forEach((route) => {
-     // Avoid adding the root '/' twice if it's the same as '/en'
-    if (route !== '') { 
-        sitemapEntries.push({
-            url: `${BASE_URL}${route}`,
-            lastModified: new Date(),
-            // priority: 0.8, 
-        });
-    } else {
-         // Ensure the root URL itself is included once
-         if (!sitemapEntries.some(entry => entry.url === BASE_URL || entry.url === `${BASE_URL}/`)) {
-            sitemapEntries.push({
-                url: BASE_URL,
-                lastModified: new Date(),
-                // priority: 1.0,
-            });
-         }
-    }
+    sitemapEntries.push({
+      url: `${BASE_URL}${route}`, // Add URLs like /about, /features, and the root /
+      lastModified: new Date(),
+      // priority: route === '' ? 1.0 : 0.8, // Optional: Prioritize homepage
+    });
   });
-
 
   // If you had dynamic routes (e.g., /products/[slug]), you would fetch those slugs
   // and generate entries for them here for each locale.
