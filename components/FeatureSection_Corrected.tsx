@@ -1,7 +1,6 @@
 "use client";
 
 import FeatureCard from './FeatureCard';
-// Removed unused Image import
 import { useTranslations } from 'next-intl';
 import DetailedFeature from './DetailedFeature'; // Import the new component
 
@@ -28,7 +27,6 @@ const databaseIcon = (
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
   </svg>
 );
-// Define AI and History icons (using placeholders from original code)
 const aiInsightsIcon = (
   <svg className="w-10 h-10 text-canada-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -38,13 +36,12 @@ const historyIcon = (
    <svg className="w-10 h-10 text-canada-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
-);
+); // Semicolon included
 
 
 const FeatureSection = () => {
-  const t = useTranslations('FeatureSection'); // Get translations
+  const t = useTranslations('FeatureSection');
 
-  // Simplified features array definition
   const featureCards = [
     { titleKey: 'feature1Title', descKey: 'feature1Desc', icon: barcodeIcon },
     { titleKey: 'feature2Title', descKey: 'feature2Desc', icon: imageRecIcon },
@@ -54,7 +51,6 @@ const FeatureSection = () => {
 
   return (
     <div className="features-section py-24 relative z-30 bg-transparent">
-      {/* Local overlay with lower opacity */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-white opacity-25"></div>
       </div>
@@ -69,7 +65,6 @@ const FeatureSection = () => {
           </p>
         </div>
         
-        {/* Feature cards in a grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-32">
           {featureCards.map((feature, index) => (
             <FeatureCard 
@@ -81,10 +76,7 @@ const FeatureSection = () => {
           ))}
         </div>
         
-        {/* Featured demo sections using DetailedFeature component in 2x2 layout */}
-        <div className="space-y-32 mb-16"> {/* Space between the two rows */}
-          
-          {/* First Row */}
+        <div className="space-y-32 mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <DetailedFeature
               icon={imageRecIcon}
@@ -116,7 +108,6 @@ const FeatureSection = () => {
             />
           </div>
 
-          {/* Second Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <DetailedFeature
               icon={barcodeIcon}
@@ -147,10 +138,9 @@ const FeatureSection = () => {
               imagePosition="left" 
             />
           </div>
-          
-        </div> {/* End of space-y-32 */}
-      </div> {/* End of container */}
-    </div> {/* End of features-section */}
+        </div>
+      </div>
+    </div>
   );
 };
 
