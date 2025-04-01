@@ -3,7 +3,9 @@ import { getTranslations } from 'next-intl/server';
 import DownloadPageClientContent from '@/components/DownloadPageClientContent'; // Import the new client component
 
 // Generate metadata for the Download page
-export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> { // Accept full params object
+  const resolvedParams = await params; // Await params
+  const locale = resolvedParams.locale; // Extract locale after awaiting
   const t = await getTranslations({ locale, namespace: 'DownloadPage' });
 
   return {
