@@ -3,10 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import TermsPageClientContent from '@/components/TermsPageClientContent'; // Import the new client component
 
 // Generate metadata for the Terms page
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> { // Accept full params object
-  const resolvedParams = await params; // Await params
-  const locale = resolvedParams.locale; // Extract locale after awaiting
-  const t = await getTranslations({ locale, namespace: 'TermsPage' });
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'TermsPage' });
 
   // Extract the first sentence for the description
   const description = t('acceptanceP1').split('.')[0] + '.'; 
@@ -15,7 +13,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     title: t('title'), // Use a specific title for this page
     description: description, // Use the first sentence of the acceptance paragraph
     alternates: {
-      canonical: `/${locale}/terms`, // Set canonical URL for this specific page
+      canonical: `/${params.locale}/terms`, // Set canonical URL for this specific page
     },
     // Discourage search engines from indexing terms pages if desired
     // robots: { 

@@ -3,10 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import PrivacyPageClientContent from '@/components/PrivacyPageClientContent'; // Import the new client component
 
 // Generate metadata for the Privacy page
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> { // Accept full params object
-  const resolvedParams = await params; // Await params
-  const locale = resolvedParams.locale; // Extract locale after awaiting
-  const t = await getTranslations({ locale, namespace: 'PrivacyPage' });
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'PrivacyPage' });
 
   // Extract the first sentence for the description
   const description = t('introP1').split('.')[0] + '.'; 
@@ -15,7 +13,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     title: t('title'), // Use a specific title for this page
     description: description, // Use the first sentence of the intro paragraph
     alternates: {
-      canonical: `/${locale}/privacy`, // Set canonical URL for this specific page
+      canonical: `/${params.locale}/privacy`, // Set canonical URL for this specific page
     },
     // Discourage search engines from indexing privacy policy pages if desired
     // robots: { 

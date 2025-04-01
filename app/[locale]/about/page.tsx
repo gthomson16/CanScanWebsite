@@ -3,10 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import AboutPageClientContent from '@/components/AboutPageClientContent'; // Import the new client component
 
 // Generate metadata for the About page
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> { // Accept full params object
-  const resolvedParams = await params; // Await params
-  const locale = resolvedParams.locale; // Extract locale after awaiting
-  const t = await getTranslations({ locale, namespace: 'AboutPage' });
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: 'AboutPage' });
 
   return {
     title: t('heroTitle'), // Use a specific title for this page
@@ -14,7 +12,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     // Other metadata like OpenGraph will be inherited from the layout
     // unless overridden here.
     alternates: {
-      canonical: `/${locale}/about`, // Set canonical URL for this specific page
+      canonical: `/${params.locale}/about`, // Set canonical URL for this specific page
     },
   };
 }
