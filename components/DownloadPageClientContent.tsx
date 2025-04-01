@@ -21,32 +21,36 @@ export default function DownloadPageClientContent() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link 
-                href="#" 
-                className="bg-black text-white font-bold py-4 px-8 rounded-lg flex items-center justify-center hover:bg-gray-800 transition"
+              {/* Disabled App Store Button */}
+              <div 
+                className="bg-black text-white font-bold py-4 px-8 rounded-lg flex items-center justify-center opacity-50 cursor-not-allowed" // Removed Link, added disabled styles
               >
                 <svg className="w-7 h-7 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  {/* SVG paths remain the same */}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v18m0 0l-7-7m7 7l7-7" />
                 </svg>
                 <div className="text-left">
                   <div className="text-xs">{tCTA('appStoreLabel')}</div>
                   <div className="text-lg font-bold">{tCTA('appStoreName')}</div>
                 </div>
-              </Link>
+              </div>
               
-              <Link 
-                href="#" 
-                className="bg-black text-white font-bold py-4 px-8 rounded-lg flex items-center justify-center hover:bg-gray-800 transition"
+              {/* Disabled Google Play Button */}
+              <div 
+                className="bg-black text-white font-bold py-4 px-8 rounded-lg flex items-center justify-center opacity-50 cursor-not-allowed" // Removed Link, added disabled styles
               >
                 <svg className="w-7 h-7 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  {/* SVG paths remain the same */}
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
                 <div className="text-left">
                   <div className="text-xs">{tCTA('googlePlayLabel')}</div>
                   <div className="text-lg font-bold">{tCTA('googlePlayName')}</div>
                 </div>
-              </Link>
+              </div>
             </div>
+            {/* Coming Soon Text */}
+            <p className="text-center text-gray-500 mt-4 text-sm">{tCTA('comingSoon')}</p>
           </div>
         </div>
       </section>

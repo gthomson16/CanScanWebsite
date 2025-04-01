@@ -33,11 +33,12 @@ const DownloadCTA = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link 
-                href="#" 
-                className="bg-white text-canada-red font-bold py-4 px-6 rounded-lg flex items-center justify-center hover:bg-gray-100 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              {/* Disabled App Store Button */}
+              <div 
+                className="bg-white text-canada-red font-bold py-4 px-6 rounded-lg flex items-center justify-center shadow-lg opacity-50 cursor-not-allowed" // Removed Link, added disabled styles
               >
                 <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* SVG paths remain the same */}
                   <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.547 9.103 1.519 12.082 1 1.462 2.2 3.105 3.773 3.045 1.513-.054 2.09-.98 3.925-.98 1.834 0 2.359.98 3.96.946 1.645-.026 2.691-1.495 3.688-2.96 1.156-1.688 1.636-3.32 1.662-3.4-.036-.014-3.182-1.225-3.22-4.857-.026-3.04 2.48-4.494 2.598-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.594 1.09z" fill="#000"/>
                   <path d="M15.53 3.083c.843-1.021 1.41-2.435 1.245-3.83-1.207.054-2.662.803-3.532 1.812-.775.894-1.452 2.338-1.273 3.714 1.338.104 2.716-.684 3.559-1.696z" fill="#000"/>
                 </svg>
@@ -45,12 +46,13 @@ const DownloadCTA = () => {
                   <div className="text-xs">{t('appStoreLabel')}</div>
                   <div className="text-xl font-bold">{t('appStoreName')}</div>
                 </div>
-              </Link>
-              <Link 
-                href="#" 
-                className="bg-white text-canada-red font-bold py-4 px-6 rounded-lg flex items-center justify-center hover:bg-gray-100 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              </div>
+              {/* Disabled Google Play Button */}
+              <div 
+                className="bg-white text-canada-red font-bold py-4 px-6 rounded-lg flex items-center justify-center shadow-lg opacity-50 cursor-not-allowed" // Removed Link, added disabled styles
               >
                 <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* SVG paths remain the same */}
                   <path d="M3 20.069V3.931C3 3.4 3.247 2.965 3.701 2.674l8.932 8.708L3.7 20.326A1.494 1.494 0 013 20.07z" fill="#000"/>
                   <path d="M3.701 2.674A1.495 1.495 0 015 2.068l.004-.001 11.648 6.815-3.018 2.94L3.7 2.673z" fill="#000"/>
                   <path d="M16.652 8.882l2.92 1.709a1.495 1.495 0 010 2.818l-2.92 1.709-3.341-3.118 3.341-3.118z" fill="#000"/>
@@ -60,8 +62,10 @@ const DownloadCTA = () => {
                   <div className="text-xs">{t('googlePlayLabel')}</div>
                   <div className="text-xl font-bold">{t('googlePlayName')}</div>
                 </div>
-              </Link>
+              </div>
             </div>
+            {/* Coming Soon Text */}
+            <p className="text-center sm:text-left text-white opacity-80 mt-4 text-sm">{t('comingSoon')}</p>
             
             {/* User testimonial */}
             <blockquote className="mt-12 bg-white bg-opacity-10 p-6 rounded-xl backdrop-filter backdrop-blur-sm"> {/* Changed div to blockquote */}
