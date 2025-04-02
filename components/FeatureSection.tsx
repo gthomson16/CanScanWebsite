@@ -46,8 +46,8 @@ const FeatureSection = () => {
         <div className="absolute inset-0 bg-white opacity-25"></div>
       </div>
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-24">
-          <span className="inline-block px-4 py-2 bg-red-100 text-canada-red rounded-full font-semibold text-sm mb-6">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-red-100 text-red-900 rounded-full font-semibold text-sm mb-6"> {/* Changed text-canada-red to text-red-900 for contrast */}
             {t('tagline')}
           </span>
           <h2 id="feature-section-heading" className="section-heading mb-6">{t('title')}</h2> {/* Added id */}

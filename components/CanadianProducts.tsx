@@ -65,7 +65,7 @@ const CanadianProducts = () => {
     <section className="canadian-products-section bg-white py-16 relative z-30" aria-labelledby="canadian-products-heading"> {/* Changed div to section and added aria-labelledby */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-red-100 text-canada-red rounded-full font-semibold text-sm mb-4">
+          <span className="inline-block px-4 py-2 bg-red-100 text-red-900 rounded-full font-semibold text-sm mb-4"> {/* Changed text-canada-red to text-red-900 for contrast */}
             {t('tagline')}
           </span>
           <h2 id="canadian-products-heading" className="section-heading">{t('title')}</h2> {/* Added id */}
@@ -109,7 +109,7 @@ const CanadianProducts = () => {
               <div className="p-6 flex-grow">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-xl font-bold">{t(product.nameKey)}</h3>
-                  <span className="text-sm px-2 py-1 bg-red-100 text-canada-red rounded-full">{t('badgeNew')}</span>
+                  <span className="text-sm px-2 py-1 bg-red-100 text-red-900 rounded-full">{t('badgeNew')}</span> {/* Changed text-canada-red to text-red-900 for contrast */}
                 </div>
                 <p className="text-gray-600">{t(product.descKey)}</p>
               </div>

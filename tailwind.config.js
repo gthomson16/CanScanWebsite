@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'canada-red': '#FF0000',
-        'maple-leaf': '#FF0000',
+        'canada-red': '#D90000', // Adjusted for WCAG AA contrast with white
+        'maple-leaf': '#D90000', // Keep consistent
         'canada-white': '#FFFFFF',
         'canada-dark': '#1E293B',
       },
