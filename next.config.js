@@ -5,9 +5,16 @@ const nextConfig = {
   // output: 'export', // Removed for next-intl compatibility
   basePath: '',
   assetPrefix: '',
-  // images: { // Image optimization is now ENABLED (default)
-  //   unoptimized: true, 
-  // },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'm.media-amazon.com',
+        port: '',
+        pathname: '/images/**', // Allow any path under /images/
+      },
+    ],
+  },
   trailingSlash: false, // Explicitly set to false (default)
 };
 

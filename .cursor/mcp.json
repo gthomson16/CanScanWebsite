@@ -1,0 +1,38 @@
+{
+  "mcpServers": {
+    "supabase": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "@supabase/mcp-server-supabase@0.2.0",
+        "--access-token",
+        "sbp_0e04ef35ef376927ce7ea07ce7bc6ed693616475"
+      ],
+      "transportType": "stdio",
+      "shutdownOnIdle": true,
+      "idleTimeout": 1800
+    },
+    "alexander-zuev/supabase": {
+      "autoApprove": [],
+      "disabled": false,
+      "timeout": 60,
+      "command": "uvx",
+      "args": [
+        "supabase-mcp-server",
+        "--port",
+        "54321"
+      ],
+      "env": {
+        "SUPABASE_PROJECT_REF": "rqlricwclennqwaasypj",
+        "SUPABASE_DB_PASSWORD": "8Qrr5ISSMxWzTQoy",
+        "SUPABASE_REGION": "ca-central-1",
+        "SUPABASE_SERVER_TIMEOUT": "1800"
+      },
+      "transportType": "stdio",
+      "shutdownOnIdle": true,
+      "idleTimeout": 1800
+    }
+  }
+}

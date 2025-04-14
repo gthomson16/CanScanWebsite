@@ -93,6 +93,7 @@ const Footer = () => {
               <FooterLink href="/" label={tHeader('home')} pathname={pathname} />
               <FooterLink href="/about" label={tHeader('about')} pathname={pathname} />
               <FooterLink href="/features" label={tHeader('features')} pathname={pathname} />
+              <FooterLink href="/product-search" label={t('productSearch')} pathname={pathname} /> {/* Added Product Search link */}
               <FooterLink href="/support" label={tHeader('support')} pathname={pathname} />
             </ul>
           </div>

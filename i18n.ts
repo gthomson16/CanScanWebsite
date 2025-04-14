@@ -24,7 +24,17 @@ export default getRequestConfig(async ({locale}) => {
     return {
       // Pass the validated and typed locale
       locale: validLocale, 
-      messages: messages
+      messages: messages,
+      // Add fallback for missing messages
+      getMessageFallback: ({key, namespace}) => {
+        // In development, show a warning but return the key
+        if (process.env.NODE_ENV === 'development') {
+          console.warn(`[i18n] Missing message key: "${key}" in namespace "${namespace}" for locale "${validLocale}". Falling back to key.`);
+        }
+        // Explicitly return only the final segment of the key as fallback
+        const keyParts = key.split('.');
+        return keyParts[keyParts.length - 1]; 
+      }
     };
   } catch (error) {
     // Log error for debugging (consider more robust logging in production)

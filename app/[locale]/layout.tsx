@@ -128,7 +128,7 @@ export default async function RootLayout({
   const messages = await getMessages({ locale: locale });
 
   return (
-    <html lang={locale} className="scroll-smooth m-0 p-0">{/* Ensure no space/newline before <head> */}
+    <html lang={locale} className="scroll-smooth m-0 p-0" suppressHydrationWarning>{/* Ensure no space/newline before <head> */}
       <head>
         {/* Allow user scaling for accessibility */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 

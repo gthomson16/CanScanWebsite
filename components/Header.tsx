@@ -58,6 +58,7 @@ const Header = () => {
             <NavLink href="/" label={t('home')} />
             <NavLink href="/about" label={t('about')} />
             <NavLink href="/features" label={t('features')} />
+            <NavLink href="/product-search" label={t('productSearch')} /> {/* Updated link */}
             <NavLink href="/support" label={t('support')} />
           </nav>
 
@@ -87,6 +88,7 @@ const Header = () => {
             <MobileNavLink href="/" label={t('home')} onClick={() => setIsMenuOpen(false)} />
             <MobileNavLink href="/about" label={t('about')} onClick={() => setIsMenuOpen(false)} />
             <MobileNavLink href="/features" label={t('features')} onClick={() => setIsMenuOpen(false)} />
+            <MobileNavLink href="/product-search" label={t('productSearch')} onClick={() => setIsMenuOpen(false)} /> {/* Updated link */}
             <MobileNavLink href="/support" label={t('support')} onClick={() => setIsMenuOpen(false)} />
             <div className="pt-4 border-t border-gray-100"> {/* Add separator and padding */}
               <LanguageSwitcher /> {/* Add switcher to mobile menu */}
