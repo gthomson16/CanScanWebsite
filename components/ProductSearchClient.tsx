@@ -111,6 +111,7 @@ export default function ProductSearchPageClient() {
             setError(null);
             isFetching.current = false;
         }, 500),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     []);
 
     const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
