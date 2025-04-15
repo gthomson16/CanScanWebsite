@@ -360,12 +360,11 @@ export default function ProductSearchPageClient() {
                 {isLoading && <div className={styles.loading}>{t('loadingInitial')}</div>}
                 {error && !isLoading && <div className={styles.error}>{t('errorPrefix')} {error}</div>}
 
+                {/* Only show "No results found" when a search/filter is active and yields no results */}
                 {!isLoading && !error && products.length === 0 && (debouncedSearchTerm || selectedCategory) && (
                     <div className={styles.noResults}>{t('noResultsFound')}</div>
                 )}
-                 {!isLoading && !error && products.length === 0 && !debouncedSearchTerm && !selectedCategory && (
-                    <div className={styles.noResults}>{t('noResultsInitial')}</div>
-                )}
+                 {/* Removed the initial "no results" message block */}
 
                 {!isLoading && (
                     <div className={styles.resultsGrid}>
