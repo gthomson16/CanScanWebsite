@@ -11,6 +11,7 @@ const staticPages = [
   '/support',
   '/privacy',
   '/terms',
+  '/product-search', // Added product search page
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

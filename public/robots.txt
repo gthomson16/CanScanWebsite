@@ -4,3 +4,6 @@ Allow: /
 
 # Host
 Host: https://www.canscanapp.ca
+
+# Sitemap
+Sitemap: https://www.canscanapp.ca/sitemap.xml

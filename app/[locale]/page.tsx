@@ -23,6 +23,7 @@ export default function Home() {
     productsPreview,
     isLoadingPreview,
     errorPreview,
+    submittedSearchTerm, // Destructure the submitted term
   } = useProductSearchPreview(); // Use the hook
 
   const t = useTranslations('CanadianProducts'); // Get translations for the section title/tagline
@@ -79,8 +80,12 @@ export default function Home() {
             error={errorPreview}
           />
 
-          {/* View More Link */}
-          <ViewMoreProductsLink /> 
+          {/* View More Link - Pass submitted search state */}
+          <ViewMoreProductsLink 
+            searchTerm={submittedSearchTerm} // Pass the submitted term
+            selectedCategory={selectedCategory} 
+            sortBy={sortBy} 
+          /> 
         </div>
       </section>
       

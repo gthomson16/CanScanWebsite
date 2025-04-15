@@ -14,7 +14,7 @@ interface ProductPreview {
     like_count: number | null;
 }
 
-const ITEMS_PER_PREVIEW = 4; // Number of items for the homepage preview row (excluding ad card)
+const ITEMS_PER_PREVIEW = 3; // Number of items for the homepage preview row (excluding ad card) - Changed from 4
 
 export function useProductSearchPreview() {
     const [searchTerm, setSearchTerm] = useState(''); // State for the input value
@@ -116,5 +116,6 @@ export function useProductSearchPreview() {
         productsPreview,
         isLoadingPreview,
         errorPreview,
+        submittedSearchTerm, // Export the submitted term as well
     };
 }

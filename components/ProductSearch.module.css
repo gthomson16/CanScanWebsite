@@ -58,9 +58,27 @@
 
 .resultsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Update grid template to have fixed width columns for exactly 4 cards per row */
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-top: 2rem;
+    justify-content: center; /* Center grid items horizontally */
+    max-width: 1200px; /* Control the maximum width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Add a media query for smaller screens */
+@media (max-width: 1200px) {
+    .resultsGrid {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .resultsGrid {
+        grid-template-columns: repeat(1, minmax(250px, 1fr));
+    }
 }
 
 .productCard {

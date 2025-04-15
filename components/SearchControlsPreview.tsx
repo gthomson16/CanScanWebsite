@@ -40,81 +40,81 @@ const SearchControlsPreview: React.FC<SearchControlsPreviewProps> = ({
         }
     };
 
-    // Use CSS Modules classes instead of inline styles
     return (
         // Use a form for better accessibility and handling Enter key
+        // Main container: stacks vertically on mobile, row on sm+, centers items
         <form 
             onSubmit={handleSearchSubmit} 
-            className={`${styles.centeredSearchForm} ${className}`} // Use new centered class
-            style={{ gap: '1.2rem' }} // Increased gap for more spacing between controls
+            className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 ${className}`} // Responsive flex, gap
         > 
-            <input
-                type="text"
-                placeholder={t('searchPlaceholder')}
-                value={searchTerm}
-                onChange={handleSearchTermChange}
-                className={styles.centeredSearchInput}
-                aria-label={t('searchAriaLabel')}
-                style={{ width: '450px' }} // Wider search box as requested
-            />
-            
-            <button 
-                type="submit" 
-                className="btn-primary"
-                style={{ 
-                    padding: '0.5rem 1rem', 
-                    height: 'calc(1.5em + 1.5rem + 2px)',
-                    marginLeft: '0.5rem' // Add specific margin after search box
-                }}
-            >
-                {t('searchButtonText')} 
-            </button>
+            {/* Group 1: Search Input + Button */}
+            <div className="flex items-center w-full sm:w-auto"> {/* Flex group for input/button */}
+                <input
+                    type="text"
+                    placeholder={t('searchPlaceholder')}
+                    value={searchTerm}
+                    onChange={handleSearchTermChange}
+                    // Use Tailwind for padding, border, rounded corners, focus states + WIDER RESPONSIVE WIDTH
+                    className="px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-canada-red focus:border-transparent flex-grow md:w-96" 
+                    aria-label={t('searchAriaLabel')}
+                    style={{ minWidth: '200px' }} // Keep min-width if needed, Tailwind width will override on md+
+                />
+                <button 
+                    type="submit" 
+                    // Use Tailwind for styling, ensure vertical alignment with input
+                    className="px-4 py-2 bg-canada-red text-white rounded-r-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-canada-red focus:ring-offset-1 h-[calc(2.5rem+2px)]" // Match height (py-2 + border)
+                >
+                    {t('searchButtonText')} 
+                </button>
+            </div>
 
-            {/* Category Filter Dropdown with spacing */}
-            <label 
-                htmlFor="category-preview" 
-                className={styles.sortLabel}
-                style={{ marginLeft: '1rem' }} // Add more margin before label
-            >
-                {t('categoryLabel')}
-            </label>
-            <select 
-                id="category-preview" 
-                value={selectedCategory} 
-                onChange={handleCategoryChange} 
-                className={styles.sortSelect}
-            >
-                <option value="">{t('allCategoriesOption')}</option>
-                {categories.map(cat => {
-                    const translatedCat = tCat(cat);
-                    // If translation returns the key itself, display the key (original name)
-                    // Otherwise, display the translation
-                    return (
-                        <option key={cat} value={cat}>
-                            {translatedCat === cat ? cat : translatedCat}
-                        </option>
-                    );
-                })}
-            </select>
+            {/* Group 2: Category Filter - ALWAYS horizontal row */}
+            <div className="flex items-center gap-2"> {/* Reverted to always flex-row */}
+                <label 
+                    htmlFor="category-preview" 
+                    className={`${styles.sortLabel} whitespace-nowrap`} // Removed mobile margin
+                >
+                    {t('categoryLabel')}
+                </label>
+                <select 
+                    id="category-preview" 
+                    value={selectedCategory} 
+                    onChange={handleCategoryChange} 
+                    // Use Tailwind for padding, border, rounded corners + ADDED WIDTH
+                    className="w-48 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-canada-red focus:border-transparent"
+                >
+                    <option value="">{t('allCategoriesOption')}</option>
+                    {categories.map(cat => {
+                        const translatedCat = tCat(cat);
+                        return (
+                            <option key={cat} value={cat}>
+                                {translatedCat === cat ? cat : translatedCat}
+                            </option>
+                        );
+                    })}
+                </select>
+            </div>
 
-            {/* Sort Dropdown with spacing */}
-            <label 
-                htmlFor="sort-preview" 
-                className={styles.sortLabel}
-                style={{ marginLeft: '1rem' }} // Add more margin before label
-            >
-                {t('sortByLabel')}
-            </label>
-            <select 
-                id="sort-preview" 
-                value={sortBy} 
-                onChange={handleSortChange} 
-                className={styles.sortSelect}
-            >
-                <option value="liked">{t('sortByLiked')}</option>
-                <option value="rated">{t('sortByRated')}</option>
-                <option value="reviewed">{t('sortByReviewed')}</option>
-            </select>
+            {/* Group 3: Sort Dropdown - ALWAYS horizontal row */}
+            <div className="flex items-center gap-2"> {/* Reverted to always flex-row */}
+                <label 
+                    htmlFor="sort-preview" 
+                    className={`${styles.sortLabel} whitespace-nowrap`} // Removed mobile margin
+                >
+                    {t('sortByLabel')}
+                </label>
+                <select 
+                    id="sort-preview" 
+                    value={sortBy} 
+                    onChange={handleSortChange} 
+                    // Use Tailwind for padding, border, rounded corners
+                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-canada-red focus:border-transparent"
+                >
+                    <option value="liked">{t('sortByLiked')}</option>
+                    <option value="rated">{t('sortByRated')}</option>
+                    <option value="reviewed">{t('sortByReviewed')}</option>
+                </select>
+            </div>
         </form>
     );
 };
