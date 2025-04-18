@@ -12,27 +12,28 @@ import { useTranslations } from 'next-intl'; // Import useTranslations for secti
 
 export default function Home() { 
   const {
-    searchTerm, // Add missing state
-    handleSearchTermChange, // Add missing handler
-    handleSearchSubmit, // Add missing handler
-    categories,
-    selectedCategory,
-    handleCategoryChange,
+    searchTerm,
+    handleSearchTermChange,
+    handleSearchSubmit,
+    categoryTree,
+    selectedCategoryPath,
+    onCategorySelect,
     sortBy,
     handleSortChange,
     productsPreview,
     isLoadingPreview,
     errorPreview,
-    submittedSearchTerm, // Destructure the submitted term
+    submittedSearchTerm,
+    selectedCategory,
   } = useProductSearchPreview(); // Use the hook
 
   const t = useTranslations('CanadianProducts'); // Get translations for the section title/tagline
 
   return (
     <main className="relative">
-      {/* Visible divider above Hero section */}
-      <div className="relative z-50 w-full border-t-2 border-black"></div>
-      
+      {/* Visible divider above Hero section - Change thickness */}
+      <div className="relative z-50 w-full border-t border-black"></div>
+
       <section className="relative -mt-2">
         <Hero />
       </section>
@@ -60,14 +61,14 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Search Controls */}
+          {/* Search Controls with new CategoryMenu */}
           <SearchControlsPreview
-            searchTerm={searchTerm} // Pass prop
-            handleSearchTermChange={handleSearchTermChange} // Pass prop
-            handleSearchSubmit={handleSearchSubmit} // Pass prop
-            categories={categories}
-            selectedCategory={selectedCategory}
-            handleCategoryChange={handleCategoryChange}
+            searchTerm={searchTerm}
+            handleSearchTermChange={handleSearchTermChange}
+            handleSearchSubmit={handleSearchSubmit}
+            categoryTree={categoryTree}
+            selectedCategoryPath={selectedCategoryPath}
+            onCategorySelect={onCategorySelect}
             sortBy={sortBy}
             handleSortChange={handleSortChange}
             className="justify-center mb-10" // Center controls and add margin
@@ -88,13 +89,17 @@ export default function Home() {
           /> 
         </div>
       </section>
-      
-      <section className="relative">
+
+      {/* Increase bottom margin on the section containing DownloadCTA */}
+      <section className="relative mb-32">
         <DownloadCTA />
       </section>
-      
-      {/* Visible divider between DownloadCTA and Footer */}
-      <div className="relative z-50 w-full border-t-2 border-black"></div>
+
+      {/* Add new divider below CTA */}
+      <div className="relative z-50 w-full border-t border-black"></div>
+
+      {/* Visible divider between DownloadCTA and Footer - REMOVED as it's now above */}
+      {/* <div className="relative z-50 w-full border-t-2 border-black"></div> */}
     </main>
   );
 }

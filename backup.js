@@ -108,7 +108,7 @@ async function runBackup() {
     await fs.mkdir(backupDir, { recursive: true }); // recursive: true is like mkdir -p
 
     // Backup directories using recursive copy
-    const dirsToBackup = ['app', 'components', 'public', 'messages']; // Added messages dir as it seems important
+    const dirsToBackup = ['app', 'components', 'public', 'messages', 'lib', 'hooks']; // Added lib and hooks
     console.log('Backing up directories...');
     for (const dir of dirsToBackup) {
       const sourcePath = path.join(sourceDir, dir);

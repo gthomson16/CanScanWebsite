@@ -81,7 +81,7 @@
     "googlePlayLabel": "GET IT ON",
     "googlePlayName": "Google Play",
     "testimonial": "\"CanScan has completely changed how I shop. Now I can easily find and support Canadian businesses with just a quick scan!\"",
-    "testimonialAuthor": "— Sarah from Toronto",
+    "testimonialAuthor": "— Elle from Toronto",
     "comingSoon": "(Coming Soon!)"
   },
   "Header": {
@@ -317,6 +317,12 @@
     "en": "English",
     "fr": "Français"
   },
+  "BottomNavigation": {
+    "home": "Home",
+    "barcodeScanner": "Barcode",
+    "imageScanner": "AI Image",
+    "search": "Search"
+  },
   "ProductSearchPage": {
     "heroTitle": "Product Search",
     "heroSubtitle": "Find Canadian products available on Amazon.ca",
@@ -344,7 +350,16 @@
     "loadingMore": "Loading more products...",
     "noMoreResults": "No more products found.",
     "viewMoreLink": "View More Products",
-    "searchButtonText": "Search"
+    "searchButtonText": "Search",
+    "affiliateDisclaimer": "As an Amazon Associate, we earn from qualifying purchases. Some products shown may earn us a commission.",
+    "categoryLevelLabel": "Category Lvl {level}",
+    "allCategoriesOptionLevel": "All Lvl {level}",
+    "categories": "Categories",
+    "allCategories": "All Categories",
+    "resetCategories": "Reset",
+    "closeButton": "Close",
+    "backToPrevious": "Back",
+    "productsCountLabel": "products"
   },
   "AmazonCategories": {
     "Automotive": "Automotive",

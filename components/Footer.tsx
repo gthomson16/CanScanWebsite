@@ -6,7 +6,7 @@ import { FiInstagram, FiTwitter, FiFacebook } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import packageJson from '../package.json'; // Import package.json
+// Removed package.json import
 
 const Footer = () => {
   const t = useTranslations('Footer'); // Footer translations
@@ -19,9 +19,9 @@ const Footer = () => {
   
   return (
     <footer className="relative overflow-visible text-white z-10 pb-0 bg-gradient-to-br from-canada-red to-red-700">
-      {/* Top border for all pages */}
-      <div className="w-full border-t-2 border-black relative z-30"></div>
-      
+      {/* Top border for all pages - Adjust thickness */}
+      <div className="w-full border-t border-black relative z-30"></div>
+
       {/* Bottom border just above the white copyright section - removed fixed position */}
       {/* <div className="w-full border-b-2 border-black absolute bottom-[60px] left-0 right-0 z-20"></div> */}
       
@@ -106,8 +106,8 @@ const Footer = () => {
               <FooterLink href="/download" label={t('iosLabel')} pathname={pathname} />
               <FooterLink href="/download" label={t('androidLabel')} pathname={pathname} />
               <li className="mt-4">
-                {/* Use dynamic version from package.json */}
-                <span className="inline-block px-3 py-1 bg-canada-red bg-opacity-20 text-black rounded-full text-xs">{t('versionLabel', {version: packageJson.version})}</span>
+                {/* Hardcode version number */}
+                <span className="inline-block px-3 py-1 bg-canada-red bg-opacity-20 text-black rounded-full text-xs">{t('versionLabel', {version: '0.1.1'})}</span>
               </li>
             </ul>
           </div>
@@ -138,10 +138,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      
-      {/* Full-width white copyright section with border at top */}
-      <div 
-        className="w-full bg-white py-4 relative border-t-2 border-black"
+
+      {/* Full-width white copyright section with border at top - Adjust thickness */}
+      <div
+        className="w-full bg-white py-4 relative border-t border-black"
       >
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <p className="text-black mb-4 md:mb-0">

@@ -1,114 +1,100 @@
-import React, { ChangeEvent, FormEvent } from 'react'; // Added FormEvent
+'use client';
+
+import React, { ChangeEvent, FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import styles from './ProductSearch.module.css'; // Import styles
+import CategoryMenu from './CategoryMenu'; // Import the new CategoryMenu component
 
+// Define the structure for a category node (matching the one in ProductSearchClient)
+interface CategoryNode {
+  name: string;
+  children: CategoryNode[];
+  productCount?: number; // Add optional product count
+}
+
+// Updated Props for Category Menu
 interface SearchControlsPreviewProps {
-    searchTerm: string; // Added
-    handleSearchTermChange: (event: ChangeEvent<HTMLInputElement>) => void; // Added
-    handleSearchSubmit: (event?: FormEvent<HTMLFormElement>) => void; // Added
-    categories: string[];
-    selectedCategory: string;
-    handleCategoryChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+    searchTerm: string;
+    handleSearchTermChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    handleSearchSubmit?: (event?: FormEvent<HTMLFormElement>) => void; // Make optional if not always used
+
+    // Replace the multi-level dropdown props with:
+    categoryTree: CategoryNode[]; // The complete category tree
+    selectedCategoryPath: string[]; // Selected categories path
+    onCategorySelect: (categoryPath: string[]) => void; // Handler for selection
+
     sortBy: 'liked' | 'rated' | 'reviewed';
     handleSortChange: (event: ChangeEvent<HTMLSelectElement>) => void;
-    className?: string; 
+    className?: string;
 }
 
 const SearchControlsPreview: React.FC<SearchControlsPreviewProps> = ({
-    searchTerm, // Added
-    handleSearchTermChange, // Added
-    handleSearchSubmit, // Added
-    categories,
-    selectedCategory,
-    handleCategoryChange,
+    searchTerm,
+    handleSearchTermChange,
+    handleSearchSubmit,
+    categoryTree,
+    selectedCategoryPath,
+    onCategorySelect,
     sortBy,
     handleSortChange,
-    className = '', 
+    className = '',
 }) => {
-    const t = useTranslations('ProductSearchPage'); 
-    const tCat = useTranslations('AmazonCategories'); // Add translation hook for categories
-
-    // Function to safely get translation or fall back to the raw category name
-    const getCategoryTranslation = (category: string) => {
-        try {
-            // Just return the original category name without translation
-            // This prevents showing the full namespace path in the UI
-            return category;
-        } catch (e) {
-            // If translation fails, return the original category name
-            return category;
-        }
-    };
+    const t = useTranslations('ProductSearchPage');
 
     return (
         // Use a form for better accessibility and handling Enter key
-        // Main container: stacks vertically on mobile, row on sm+, centers items
-        <form 
-            onSubmit={handleSearchSubmit} 
-            className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 ${className}`} // Responsive flex, gap
-        > 
-            {/* Group 1: Search Input + Button */}
-            <div className="flex items-center w-full sm:w-auto"> {/* Flex group for input/button */}
+        <form
+            onSubmit={handleSearchSubmit}
+            // Responsive flex layout: column on small, row on medium+, wrap items
+            className={`flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-4 md:gap-6 ${className}`}
+        >
+            {/* Group 1: Search Input + Button (if submit handler exists) */}
+            <div className="flex items-center w-full md:w-auto"> {/* Full width on small, auto on medium+ */}
                 <input
                     type="text"
                     placeholder={t('searchPlaceholder')}
                     value={searchTerm}
                     onChange={handleSearchTermChange}
-                    // Use Tailwind for padding, border, rounded corners, focus states + WIDER RESPONSIVE WIDTH
-                    className="px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-canada-red focus:border-transparent flex-grow md:w-96" 
+                    className="px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-canada-red focus:border-transparent flex-grow md:w-80 lg:w-96" // Adjusted width
                     aria-label={t('searchAriaLabel')}
-                    style={{ minWidth: '200px' }} // Keep min-width if needed, Tailwind width will override on md+
+                    style={{ minWidth: '150px' }}
                 />
-                <button 
-                    type="submit" 
-                    // Use Tailwind for styling, ensure vertical alignment with input
-                    className="px-4 py-2 bg-canada-red text-white rounded-r-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-canada-red focus:ring-offset-1 h-[calc(2.5rem+2px)]" // Match height (py-2 + border)
-                >
-                    {t('searchButtonText')} 
-                </button>
+                {handleSearchSubmit && ( // Conditionally render button
+                    <button
+                        type="submit"
+                        className="px-4 py-2 bg-canada-red text-white rounded-r-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-canada-red focus:ring-offset-1 h-[calc(2.5rem+2px)]" // Match input height
+                    >
+                        {t('searchButtonText')}
+                    </button>
+                )}
+                 {!handleSearchSubmit && ( // If no submit handler, round the input's right side
+                    <style jsx>{`
+                        input { border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; }
+                    `}</style>
+                 )}
             </div>
 
-            {/* Group 2: Category Filter - ALWAYS horizontal row */}
-            <div className="flex items-center gap-2"> {/* Reverted to always flex-row */}
-                <label 
-                    htmlFor="category-preview" 
-                    className={`${styles.sortLabel} whitespace-nowrap`} // Removed mobile margin
-                >
-                    {t('categoryLabel')}
-                </label>
-                <select 
-                    id="category-preview" 
-                    value={selectedCategory} 
-                    onChange={handleCategoryChange} 
-                    // Use Tailwind for padding, border, rounded corners + ADDED WIDTH
-                    className="w-48 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-canada-red focus:border-transparent"
-                >
-                    <option value="">{t('allCategoriesOption')}</option>
-                    {categories.map(cat => {
-                        const translatedCat = tCat(cat);
-                        return (
-                            <option key={cat} value={cat}>
-                                {translatedCat === cat ? cat : translatedCat}
-                            </option>
-                        );
-                    })}
-                </select>
-            </div>
+            {/* Group 2: Replace Multi-Level Category Filters with CategoryMenu */}
+            <CategoryMenu
+                categoryTree={categoryTree}
+                selectedCategoryPath={selectedCategoryPath}
+                onCategorySelect={onCategorySelect}
+                className="w-full md:w-auto"
+            />
 
-            {/* Group 3: Sort Dropdown - ALWAYS horizontal row */}
-            <div className="flex items-center gap-2"> {/* Reverted to always flex-row */}
-                <label 
-                    htmlFor="sort-preview" 
-                    className={`${styles.sortLabel} whitespace-nowrap`} // Removed mobile margin
+            {/* Group 3: Sort Dropdown */}
+            <div className="flex items-center gap-2 w-full md:w-auto"> {/* Full width on small */}
+                <label
+                    htmlFor="sort-preview"
+                    className={`${styles.sortLabel} whitespace-nowrap`}
                 >
                     {t('sortByLabel')}
                 </label>
-                <select 
-                    id="sort-preview" 
-                    value={sortBy} 
-                    onChange={handleSortChange} 
-                    // Use Tailwind for padding, border, rounded corners
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-canada-red focus:border-transparent"
+                <select
+                    id="sort-preview"
+                    value={sortBy}
+                    onChange={handleSortChange}
+                    className="w-full md:w-auto px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-canada-red focus:border-transparent"
                 >
                     <option value="liked">{t('sortByLiked')}</option>
                     <option value="rated">{t('sortByRated')}</option>

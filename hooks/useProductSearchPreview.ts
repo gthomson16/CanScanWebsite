@@ -14,6 +14,13 @@ interface ProductPreview {
     like_count: number | null;
 }
 
+// Define the structure for a category node
+interface CategoryNode {
+    name: string;
+    children: CategoryNode[];
+    productCount?: number; // Add optional product count
+}
+
 const ITEMS_PER_PREVIEW = 3; // Number of items for the homepage preview row (excluding ad card) - Changed from 4
 
 export function useProductSearchPreview() {
@@ -21,7 +28,9 @@ export function useProductSearchPreview() {
     const [submittedSearchTerm, setSubmittedSearchTerm] = useState(''); // State for term used in fetch
     const [sortBy, setSortBy] = useState<'liked' | 'rated' | 'reviewed'>('liked');
     const [selectedCategory, setSelectedCategory] = useState<string>('');
-    const [categories, setCategories] = useState<string[]>([]);
+    const [selectedCategoryPath, setSelectedCategoryPath] = useState<string[]>([]); // New state for category path
+    const [categoryTree, setCategoryTree] = useState<CategoryNode[]>([]); // Store full category tree
+
     const [productsPreview, setProductsPreview] = useState<ProductPreview[]>([]);
     const [isLoadingPreview, setIsLoadingPreview] = useState(false);
     const [errorPreview, setErrorPreview] = useState<string | null>(null);
@@ -33,7 +42,8 @@ export function useProductSearchPreview() {
                 const response = await fetch('/api/getAmazonCategories');
                 if (!response.ok) throw new Error('Failed to fetch categories');
                 const data = await response.json();
-                setCategories(data.categories || []);
+                // Store the full category tree
+                setCategoryTree(data.categories || []); 
             } catch (err) {
                 console.error("Error fetching categories for preview:", err);
                 // Optionally set an error state specific to categories if needed
@@ -88,8 +98,13 @@ export function useProductSearchPreview() {
         setSortBy(event.target.value as 'liked' | 'rated' | 'reviewed');
     };
 
-    const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedCategory(event.target.value);
+    // Updated category handler for the CategoryMenu component
+    const handleCategorySelect = (categoryPath: string[]) => {
+        setSelectedCategoryPath(categoryPath);
+        
+        // For API compatibility, convert path to string
+        const categoryString = categoryPath.join(' > ');
+        setSelectedCategory(categoryString);
     };
 
     // Handler for search input change
@@ -103,19 +118,21 @@ export function useProductSearchPreview() {
         setSubmittedSearchTerm(searchTerm); // Trigger fetch by updating submitted term
     };
 
-
     return {
-        searchTerm, // Export current input value
-        handleSearchTermChange, // Export input handler
-        handleSearchSubmit, // Export submit handler
-        categories,
+        searchTerm,
+        handleSearchTermChange,
+        handleSearchSubmit,
+        // New category-related exports
+        categoryTree,
+        selectedCategoryPath,
+        onCategorySelect: handleCategorySelect,
+        // Keep original exports for backward compatibility
         selectedCategory,
-        handleCategoryChange,
         sortBy,
         handleSortChange,
         productsPreview,
         isLoadingPreview,
         errorPreview,
-        submittedSearchTerm, // Export the submitted term as well
+        submittedSearchTerm,
     };
 }

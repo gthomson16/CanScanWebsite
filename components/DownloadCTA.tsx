@@ -84,9 +84,8 @@ const DownloadCTA = () => {
                     ))}
                   </div>
                   <p className="text-white italic mb-2">{t('testimonial')}</p>
-                  <p className="text-white italic mb-2">{t('testimonial')}</p>
                   {/* Consider wrapping author in <cite> or <footer> if needed */}
-                  <p className="text-white text-sm font-medium">{t('testimonialAuthor')}</p> 
+                  <p className="text-white text-sm font-medium">{t('testimonialAuthor')}</p>
                 </div>
               </div>
             </blockquote> {/* Changed div to blockquote */}
@@ -98,9 +97,10 @@ const DownloadCTA = () => {
               <div className="absolute -inset-4 bg-white blur-xl opacity-20"></div>
               <div className="relative h-[500px] w-[250px] transition-all duration-300 hover:scale-105 hover:z-10 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[5deg] transform-gpu overflow-hidden">
                 <Image 
-                  src="/images/screens/bilingual.jpg" 
-                  alt="CanScan App" 
+                  src="/images/screens/bilingual.jpg"
+                  alt="CanScan App"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw" // Added sizes prop
                   style={{ objectFit: 'contain' }}
                   className="relative z-10"
                 />

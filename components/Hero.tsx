@@ -54,9 +54,10 @@ const Hero = () => {
             {/* Phone mockup container with 3D effect */}
             <div className="relative h-[600px] w-[300px] transition-all duration-300 hover:scale-105 hover:z-10 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[5deg] transform-gpu">
               <Image 
-                src="/images/screens/home.jpg" 
-                alt="CanScan App" 
+                src="/images/screens/home.jpg"
+                alt="CanScan App"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw" // Added sizes prop
                 className="object-contain"
               />
               

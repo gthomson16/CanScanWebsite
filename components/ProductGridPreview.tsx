@@ -43,7 +43,21 @@ const ProductGridPreview: React.FC<ProductGridPreviewProps> = ({ products, isLoa
     const t = useTranslations('ProductSearchPage'); // Use the consolidated namespace
 
     if (isLoading) {
-        return <div className={styles.loading}>{t('loadingInitial')}</div>;
+        // Use the skeleton loader instead of simple text
+        return (
+            <div className={styles.skeletonGrid}>
+                {[...Array(4)].map((_, i) => (
+                    <div key={i} className={styles.skeletonCard}>
+                        <div className={styles.skeletonHeader}>
+                            <div className={styles.skeletonHeaderContent}></div>
+                        </div>
+                        <div className={styles.skeletonImage}></div>
+                        <div className={styles.skeletonTitle}></div>
+                        <div className={styles.skeletonStats}></div>
+                    </div>
+                ))}
+            </div>
+        );
     }
 
     if (error) {

@@ -4,8 +4,10 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import BottomNavigation from '@/components/BottomNavigation';
+import bottomNavStyles from '@/components/BottomNavigation.module.css'; // Import bottom nav styles
 import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server'; 
+import {getMessages} from 'next-intl/server';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -180,12 +182,19 @@ export default async function RootLayout({
           
         {/* Wrap only the main content structure with the provider */}
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex flex-col min-h-screen relative z-20 overflow-hidden">
+          {/* Apply bottom spacing class to the main content wrapper */}
+          <div className={`flex flex-col min-h-screen relative z-20 overflow-hidden ${bottomNavStyles.bottomSpacing}`}>
               <Header />
+              {/* Remove padding from main/div, it's now on the outer div */}
               <main className="flex-grow m-0 p-0">
-                {children}
+                <div>
+                  {children}
+                </div>
               </main>
               <Footer />
+              {/* Add divider above BottomNavigation */}
+              <div className="relative z-50 w-full border-t border-black"></div>
+              <BottomNavigation />
             </div>
         </NextIntlClientProvider>
         <SpeedInsights />

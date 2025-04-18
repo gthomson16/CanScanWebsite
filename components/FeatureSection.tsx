@@ -115,10 +115,11 @@ const FeatureSection = () => {
                     <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-blue-50 blur-xl opacity-40"></div>
                     <div className="relative overflow-hidden transition-all duration-300 hover:scale-105 hover:z-10 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[5deg] transform-gpu">
                       <Image 
-                        src="/images/screens/ai_image.jpg" 
-                        alt="Image recognition feature" 
+                        src="/images/screens/ai_image.jpg"
+                        alt="Image recognition feature"
                         width={240}
                         height={480}
+                        style={{ height: 'auto' }} // Maintain aspect ratio
                         className=""
                       />
                     </div>
@@ -173,10 +174,11 @@ const FeatureSection = () => {
                     <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-blue-50 blur-xl opacity-40"></div>
                     <div className="relative overflow-hidden transition-all duration-300 hover:scale-105 hover:z-10 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[5deg] transform-gpu">
                       <Image 
-                        src="/images/screens/ai_insights.jpg" 
-                        alt="AI Generated Insights feature" 
+                        src="/images/screens/ai_insights.jpg"
+                        alt="AI Generated Insights feature"
                         width={240}
                         height={480}
+                        style={{ height: 'auto' }} // Maintain aspect ratio
                         className=""
                       />
                     </div>
@@ -197,10 +199,11 @@ const FeatureSection = () => {
                     <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-blue-50 blur-xl opacity-40"></div>
                     <div className="relative overflow-hidden transition-all duration-300 hover:scale-105 hover:z-10 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[5deg] transform-gpu">
                       <Image 
-                        src="/images/screens/barcode.jpg" 
-                        alt="Barcode scanning feature" 
-                  width={240}
-                  height={480}
+                        src="/images/screens/barcode.jpg"
+                        alt="Barcode scanning feature"
+                        width={240}
+                        height={480}
+                        style={{ height: 'auto' }} // Maintain aspect ratio
                         className=""
                       />
                     </div>
@@ -253,10 +256,11 @@ const FeatureSection = () => {
                     <div className="absolute -inset-4 bg-gradient-to-r from-blue-100 to-blue-50 blur-xl opacity-40"></div>
                     <div className="relative overflow-hidden transition-all duration-300 hover:scale-105 hover:z-10 hover:shadow-2xl hover:-translate-y-2 hover:rotate-[5deg] transform-gpu">
                       <Image 
-                        src="/images/screens/history.jpg" 
-                        alt="Scan History feature" 
+                        src="/images/screens/history.jpg"
+                        alt="Scan History feature"
                         width={240}
                         height={480}
+                        style={{ height: 'auto' }} // Maintain aspect ratio
                         className=""
                       />
                     </div>

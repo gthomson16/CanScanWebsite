@@ -27,9 +27,11 @@ export async function GET(request: NextRequest) {
       // e.g., .textSearch('fts_column', query, { type: 'websearch' }) if you set up an FTS column.
     }
 
-    // Apply category filter if provided (using like for prefix matching)
+    // Apply category filter if provided (using like for prefix matching the selected path)
     if (category) {
-      supabaseQuery = supabaseQuery.like('bread_crumbs', `${category}%`);
+      // Ensure the category string doesn't end with '%' already, though it shouldn't
+      const searchPattern = category.endsWith('%') ? category : `${category}%`;
+      supabaseQuery = supabaseQuery.like('bread_crumbs', searchPattern);
     }
 
     // Apply sorting

@@ -317,6 +317,12 @@
     "en": "English",
     "fr": "Français"
   },
+  "BottomNavigation": {
+    "home": "Accueil",
+    "barcodeScanner": "Code-barres",
+    "imageScanner": "Image IA",
+    "search": "Recherche"
+  },
   "ProductSearchPage": {
     "heroTitle": "Recherche de Produits",
     "heroSubtitle": "Trouvez des produits disponibles sur Amazon.ca",
@@ -344,7 +350,16 @@
     "loadingMore": "Chargement de plus de produits...",
     "noMoreResults": "Aucun autre produit trouvé.",
     "viewMoreLink": "Voir Plus de Produits",
-    "searchButtonText": "Rechercher"
+    "searchButtonText": "Rechercher",
+    "affiliateDisclaimer": "En tant qu'associé Amazon, nous gagnons sur les achats éligibles. Certains produits affichés peuvent nous rapporter une commission.",
+    "categoryLevelLabel": "Catégorie Niv {level}",
+    "allCategoriesOptionLevel": "Tous Niv {level}",
+    "categories": "Catégories",
+    "allCategories": "Toutes les Catégories",
+    "resetCategories": "Réinitialiser",
+    "closeButton": "Fermer",
+    "backToPrevious": "Retour",
+    "productsCountLabel": "produits"
   },
   "AmazonCategories": {
     "Automotive": "Automobile",
